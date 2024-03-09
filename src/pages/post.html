@@ -1,0 +1,11 @@
+<div id="dynamic-posts-container" hx-get="/api/posts" hx-trigger="load" hx-ext="lazy-loads">
+    <!-- Content will be dynamically loaded here -->
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Set up lazy loading for the dynamic-posts-container
+        htmx.trigger('load', document.getElementById('dynamic-posts-container'));
+    });
+</script>
+

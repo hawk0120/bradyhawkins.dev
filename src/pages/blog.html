@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <!-- Include htmx library -->
+    <script src="https://unpkg.com/htmx.org@1.7.0/dist/htmx.js"></script>
+    <!-- Include external JavaScript file for better organization -->
+    <script src="../../src/blog/blog.js"></script>
+</head>
+<body>
+
+    <h1>Blog Posts</h1>
+
+    <!-- Container to display blog posts -->
+    <div id="blog-posts-container" hx-trigger="load" hx-ext="lazy-loads">
+        <!-- Content will be dynamically loaded here -->
+        <!-- Include the content of posts.html -->
+        <div id="individual-post-container"></div>
+        <div hx-include="posts.html" hx-trigger="load" hx-ext="lazy-loads" hx-target="#individual-post-container"></div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading-indicator" style="display: none;">Loading...</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set up lazy loading for the blog-posts-container
+            htmx.trigger('load', document.getElementById('blog-posts-container'));
+        });
+    </script>
+
+</body>
+</html>
+
