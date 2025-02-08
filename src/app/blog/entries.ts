@@ -16,11 +16,11 @@ export const entries: Post[] = [
     date: new Date('2024-06-05'),
   },
   {
-    title: 'bld weepy',
+    title: 'build weepy',
     date: new Date('2024-05-24'),
   },
   {
-    title: 'bld debby',
+    title: 'build debby',
     date: new Date('2024-05-16'),
   },
   {

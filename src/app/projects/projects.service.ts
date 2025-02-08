@@ -15,20 +15,28 @@ export class ProjectService {
         url: 'https://github.com/hawk0120/clammy',
       },
 
-        {
-          name: "debby",
-          description: "debby is file based database system. I enjoy the speed and ease of sqlLite, but found myself wanting something even simpler so I built a database system that stores data in a file. It has read, write, and update commands. It loads the entire database into memory when the read command is called. Its a simple solution for small projects.",
-          url: "https://www.bradyhawkins.dev/blog/bld-debby"
-        },
+      {
+        name: 'debby',
+        description:
+          'debby is file based database system. I enjoy the speed and ease of sqlLite, but found myself wanting something even simpler so I built a database system that stores data in a file. It has read, write, and update commands. It loads the entire database into memory when the read command is called. Its a simple solution for small projects.',
+        url: 'https://www.bradyhawkins.dev/blog/bld-debby',
+      },
 
-        {
-          name: "Weapy",
-          description: "Developed a mobile application that tracks and displays real-time pollen levels for trees, grass, weeds, and mold based on the user's current location. Used React Native, @rneui/themed for custom theming, and react-native-elements for UI components. Features include automatic location-based updates, a manual location reset modal, and animated indicators for pollen severity.",
-          url: "https://www.bradyhawkins.dev/blog/bld-weepy"
-        },
+      {
+        name: 'Weapy',
+        description:
+          "Developed a mobile application that tracks and displays real-time pollen levels for trees, grass, weeds, and mold based on the user's current location. Used React Native, @rneui/themed for custom theming, and react-native-elements for UI components. Features include automatic location-based updates, a manual location reset modal, and animated indicators for pollen severity.",
+        url: 'https://www.bradyhawkins.dev/blog/bld-weepy',
+      },
 
+      {
+        name: 'Songbird Tribe',
+        description:
+          'The project is a React based landing page for a musician that I designed and developed.',
+        url: 'http://www.songbirdtribe.com',
+      },
 
-        {
+      {
         name: 'Cooking With Andrea Application',
         description:
           'A cross platform recipe application using React Native. Uses backend RESTful API using Node.js, Express, and MongoDB to shuttle recipes to a React Native front end',
@@ -42,19 +50,18 @@ export class ProjectService {
       },
 
       {
-        name: "ScottyAuto.ca",
+        name: 'ScottyAuto.ca',
         description:
           "A standalone single-page application developed with React and TypeScript, providing customers with a dedicated portal for interacting with Scotty's Auto services. It features a contact form utilizing Formspree for seamless communication with the company.",
         url: 'https://www.scottysauto.ca',
       },
 
-//      {
-//        name: 'Flappy Niks Game',
-//        description:
-//          'Created an interactive Flappy Bird inspired game using HTML5 Canvas, Angular, and Typescript. This was developed as a fun gift for my nephews in Canada.',
-//        url: 'https://www.bradyhawkins.dev/game-canvas',
-//      },
-
+      //      {
+      //        name: 'Flappy Niks Game',
+      //        description:
+      //          'Created an interactive Flappy Bird inspired game using HTML5 Canvas, Angular, and Typescript. This was developed as a fun gift for my nephews in Canada.',
+      //        url: 'https://www.bradyhawkins.dev/game-canvas',
+      //      },
 
       {
         name: 'Personal portfolio site',
@@ -63,12 +70,12 @@ export class ProjectService {
         url: 'https://www.bradyhawkins.dev',
       },
 
-//      {
-//        name: 'Harambe',
-//        description:
-//          'A CLI too to set up Garmin Monkey-C applications. The project was inspired by my love for running and create-react-app',
-//        url: 'https://github.com/hawk0120/Harambe',
-//      },
+      //      {
+      //        name: 'Harambe',
+      //        description:
+      //          'A CLI too to set up Garmin Monkey-C applications. The project was inspired by my love for running and create-react-app',
+      //        url: 'https://github.com/hawk0120/Harambe',
+      //      },
 
       {
         name: 'Counter React Native Application',
