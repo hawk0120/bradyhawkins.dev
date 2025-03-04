@@ -6,6 +6,7 @@ import {
 } from '@angular/router';
 import { NavBarComponent } from './common/navbar/navbar.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { ChatComponent } from './chat/chat.component';
 
 @Component({
   selector: 'app-root',

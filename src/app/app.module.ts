@@ -8,7 +8,7 @@ import {GoogleSheetsService} from './stats/google-sheets.service';
 
 @NgModule({
 		declarations: [AppComponent],
-		imports: [BrowserModule, CommonModule,HttpClientModule, GtagModule.forRoot({ trackingId: 'G-HB4RVZXJ4N', trackPageviews: true })],
+		imports: [BrowserModule, FormsModule, CommonModule, HttpClientModule],
 		providers: [GoogleSheetsService],
 		bootstrap: [AppComponent]
 })
