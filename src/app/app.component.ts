@@ -13,6 +13,7 @@ import { ChatComponent } from './chat/chat.component';
   standalone: true,
   imports: [
     NavBarComponent,
+		ChatComponent,
     FooterComponent,
     RouterOutlet,
     RouterLink,

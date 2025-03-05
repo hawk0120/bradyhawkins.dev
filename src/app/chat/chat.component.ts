@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from './chat.service';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  standalone: true,
+	templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.css'],
+  imports: [NgFor, FormsModule],
 })
 export class ChatComponent implements OnInit {
   messages: { user: string, text: string }[] = [];
-  messageText: string = '';
-  user: string = 'User1'; // Can be dynamic in a real app
+  messageText: string = 'Hello!';
+  user: string = 'Brady'; // Can be dynamic in a real app
 
   constructor(private chatService: ChatService) {}
 
