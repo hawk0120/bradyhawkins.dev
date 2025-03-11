@@ -8,8 +8,6 @@ footer {
   margin: 0 auto;
 }
 
-.icon-container {
-}
 .icon {
   color: var(--grey);
   padding: 12px;
@@ -19,5 +17,6 @@ footer {
 
 .icon:hover {
   cursor: pointer;
-  color: var(--yellow);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	color: var(--red);
 }

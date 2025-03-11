@@ -1,14 +1,15 @@
 <div class="chat-container">
-  <div class="chat-box">
-    <div *ngFor="let msg of messages " class="chat-message">
-      <strong>{{ msg.user }}:</strong> {{ msg.text }}
-    </div>
-  </div>
+				<div class="chat-box">
+								<div class="chat-message">
+												<strong>{{ responseMessage}}:</strong> 
+								</div>
+				</div>
 
-  <div class="chat-input">
-    <input type="text" [(ngModel)]="messageText" placeholder="Type a message..." (keyup.enter)="sendMessage()" />
-		<p>Press enter to send {{ messageText }}</p>
-    <button (click)="sendMessage()">Send</button>
-  </div>
+				<div class="chat-input">
+								<textarea type="text" [(ngModel)]="messageText" placeholder="Type a message to chat with me..." (keyup.enter)="sendMessage()" >
+												{{ messageText }}
+								</textarea>
+												<button (click)="sendMessage()">Send</button>
+				</div>
 </div>
 

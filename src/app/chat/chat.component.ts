@@ -11,23 +11,20 @@ import { FormsModule } from '@angular/forms';
   imports: [NgFor, FormsModule],
 })
 export class ChatComponent implements OnInit {
-  messages: { user: string, text: string }[] = [];
-  messageText: string = 'Hello!';
-  user: string = 'Brady'; // Can be dynamic in a real app
+  userMessage = '';
+  responseMessage = '';
 
   constructor(private chatService: ChatService) {}
 
-  ngOnInit() {
-    this.chatService.getMessages().subscribe((messages: { user: string, text: string }[]) => {
-      this.messages = messages;
-    });
-  }
-
   sendMessage() {
-    if (this.messageText.trim()) {
-      this.chatService.sendMessage(this.user, this.messageText);
-      this.messageText = '';
-    }
-  }
+    this.chatService.sendMessage(this.userMessage).subscribe({
+      next: (response) => {
+        this.responseMessage = response.choices[0].message.content;
+      },
+      error: (error) => {
+        console.error('Error:', error);
+      },
+    });
+}
 }
 
