@@ -4,27 +4,45 @@ import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-chat',
-  standalone: true,
-	templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css'],
-  imports: [NgFor, FormsModule],
+				selector: 'app-chat',
+				standalone: true,
+				templateUrl: './chat.component.html',
+				styleUrls: ['./chat.component.css'],
+				imports: [NgFor, FormsModule],
 })
+
 export class ChatComponent implements OnInit {
-  userMessage = '';
-  responseMessage = '';
+				messages: { user: string, text: string }[] = [];
+				messageText: string = '';
+				user: string = 'Brady'; 
 
-  constructor(private chatService: ChatService) {}
+				constructor(private chatService: ChatService) {}
 
-  sendMessage() {
-    this.chatService.sendMessage(this.userMessage).subscribe({
-      next: (response) => {
-        this.responseMessage = response.choices[0].message.content;
-      },
-      error: (error) => {
-        console.error('Error:', error);
-      },
-    });
-}
+				ngOnInit() {
+								this.chatService.getMessages().subscribe((messages: { user: string, text: string }[]) => {
+												this.messages = messages;
+								});
+				}
+
+				sendMessage() {
+								if (this.messageText.trim()) {
+												// Push user message first
+
+												this.chatService.fetchChatFromApi(this.user, this.messageText).subscribe(
+																response => {
+																				console.log('Server response:', response);
+																				this.messages.push({ user: 'bot', text: response.response });
+																},
+																error => {
+																				console.error('Error:', error);
+
+																				this.messages.push({ user: 'bot', response: 'Error communicating with server.' });
+																}
+												);
+												this.messageText = '';
+								}
+								}
+				}
+
 }
 

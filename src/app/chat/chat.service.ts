@@ -1,33 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+				providedIn: 'root',
 })
 export class ChatService {
-  private apiUrl = 'https://lechat.mistral.ai/v1/chat/completions';
-  private apiKey = 'ag:546f031e:20250311:untitled-agent:275ef86d'; // Replace with your actual API key
+				public messages: BehaviorSubject<{ user: string, text: string }[]> = new BehaviorSubject<{ user: string, text: string }[]>([
+								{ user: 'Alice', text: 'Hey, how are you?' },
+								{ user: 'Bob', text: 'I’m good, thanks! How about you?' },
+								{ user: 'Alice', text: 'Doing well! Just working on a project.' },
+								{ user: 'Charlie', text: 'Nice! What’s it about?' }
+				]);
 
-  constructor(private http: HttpClient) {}
+				private OLLAMA_API_URL = 'http://localhost:3000/api';
 
-  sendMessage(userMessage: string): Observable<any> {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.apiKey}`,
-      'Content-Type': 'application/json',
-    });
+								constructor(private http: HttpClient) {}
 
-    const body = {
-      model: 'mistral-7b-instruct', // Adjust model if needed
-      messages: [
-        { role: 'system', content: 'You are a helpful assistant.' },
-        { role: 'user', content: userMessage },
-      ],
-      temperature: 0.7,
-      max_tokens: 200,
-    };
+				sendMessage(user: string, text: string) {
+								const currentMessages = this.messages.getValue();
+								this.messages.next([...currentMessages, { user, text }]);
+				}
 
-    return this.http.post<any>(this.apiUrl, body, { headers });
-  }
+				getMessages(): Observable<{ user: string, text: string }[]> {
+								return this.messages.asObservable();
+				}
+
+				fetchChatFromApi(user: string, text: string) {
+
+								var prompt = this.messages.getValue().toString() + '' + user.toString() + ': ' + text.toString() + '\n' 
+								+ `This is our previous chat history. Pretend to be Brady Hawkins. A dad, dev, and fun guy.
+												You are a bot on his personal website, you need to any questions professionally and honestly.
+												Dont hallucinate please.`;			
+								console.log(prompt);
+
+
+								return this.http.post<{ response: string }>('http://localhost:3000/api', {
+												model: 'llama3',
+												prompt: prompt
+								})
+
+				}
+
 }
+
 
